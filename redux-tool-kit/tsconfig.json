@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/requests/apiSlice.jsx", "src/store/slices/auth/authSlice.jsx", "src/store/slices/auth/authApiSlice.jsx", "src/store/slices/slice.jsx", "src/store/StoreProvider.jsx", "src/store/store.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/requests/apiSlice.jsx", "src/store/slices/auth/authSlice.jsx", "src/store/slices/auth/authApiSlice.jsx", "src/store/slices/slice.jsx", "src/store/StoreProvider.jsx", "src/store/store.tsx", "src/app/api/apiSliceNew.jsx"],
   "exclude": ["node_modules"]
 }

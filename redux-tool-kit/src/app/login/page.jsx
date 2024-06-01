@@ -5,7 +5,8 @@ import { useRef, useState, useEffect } from 'react'
 //import { useDispatch } from 'react-redux'
 import { setCredentials } from '../../store/slices/auth/authSlice'
 //import { useLoginMutation } from '../../store/slices/auth/authApiSlice'
-import { useCreatePostMutation } from '../../requests/apiSlice2';
+//import { useCreatePostMutation } from '../../requests/apiSlice2';
+import { useLoginMutation } from "../../store/slices/auth/authApiSlice"
 
 const Login = () => {
     const userRef = useRef()
@@ -26,13 +27,15 @@ const Login = () => {
         setErrMsg('')
     }, [user, pwd])
 
-    const [createPost, { isLoading, isSuccess, isError, error }] = useCreatePostMutation();
-
+    //const [createPost, { isLoading, isSuccess, isError, error }] = useCreatePostMutation();
+    //const [createPost, { isLoading, isSuccess, isError, error }] = useLoginMutation();
+    const [login, { isLoading, isSuccess, isError, error }] = useLoginMutation();
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
-            await createPost({
+            await login({
                 "emailAddress": "t.m.parakrama+101@gmail.com",
                 "password": "Visio@1234"
             }).unwrap();
