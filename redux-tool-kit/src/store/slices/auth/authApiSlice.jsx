@@ -16,32 +16,30 @@
 //     useLoginMutation
 // } = authApiSlice
 
-"use client"
+// src/app/login/page.jsx
+"use client";
 
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { apiSlice } from "../../../app/api/apiSliceNew";
 
-
-const baseEndPoint = process.env.NEXT_PUBLIC_NODE_ENV === "production" ? process.env.NEXT_PUBLIC_BACKEND_PROD : process.env.NEXT_PUBLIC_BACKEND_DEV;
+//const baseEndPoint = process.env.NEXT_PUBLIC_NODE_ENV === "production" ? process.env.NEXT_PUBLIC_BACKEND_PROD : process.env.NEXT_PUBLIC_BACKEND_DEV;
 
 export const authApiSlice = apiSlice.injectEndpoints({
     baseEndPoint: fetchBaseQuery({ baseUrl: 'https://8o269xr9e2.execute-api.ap-southeast-1.amazonaws.com/dev' }),
     endpoints: (builder) => ({
-        createPost: builder.mutation({
-          query: (newPost) => ({
-            url: '/login/admin', // Your API endpoint
-            method: 'POST',
-            body: newPost,
-          }),
+        login: builder.mutation({
+            query: (newPost) => ({
+                url: '/login/admin', // Your API endpoint
+                method: 'POST',
+                body: newPost,
+            }),
         }),
-      }),
-})
+    }),
+});
 
+// Note the correct hook name based on the defined endpoint
+export const { useLoginMutation } = authApiSlice;
 
-
-export const {
-    useLoginMutation
-} = authApiSlice
 
 
 
