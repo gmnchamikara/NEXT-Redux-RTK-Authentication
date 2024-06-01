@@ -18,21 +18,41 @@
 
 "use client"
 
-import { fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
-import { apiSlice } from "../../api";
+import { fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { apiSlice } from "../../../app/api/apiSliceNew";
 
 
 const baseEndPoint = process.env.NEXT_PUBLIC_NODE_ENV === "production" ? process.env.NEXT_PUBLIC_BACKEND_PROD : process.env.NEXT_PUBLIC_BACKEND_DEV;
 
 export const authApiSlice = apiSlice.injectEndpoints({
-    baseEndPoint: fetchBaseQuery({ baseUrl: baseEndPoint }),
-    endpoints: builder => ({
-        login: builder.mutation({
-            query: credentials => ({
-                url: '/user/login',
-                method: 'POST',
-                body: { ...credentials }
-            })
-        })
-    })
+    baseEndPoint: fetchBaseQuery({ baseUrl: 'https://8o269xr9e2.execute-api.ap-southeast-1.amazonaws.com/dev' }),
+    endpoints: (builder) => ({
+        createPost: builder.mutation({
+          query: (newPost) => ({
+            url: '/login/admin', // Your API endpoint
+            method: 'POST',
+            body: newPost,
+          }),
+        }),
+      }),
 })
+
+
+
+export const {
+    useLoginMutation
+} = authApiSlice
+
+
+
+
+// , // Change '/api' to your API base URL
+// endpoints: (builder) => ({
+//   createPost: builder.mutation({
+//     query: (newPost) => ({
+//       url: '/login/admin', // Your API endpoint
+//       method: 'POST',
+//       body: newPost,
+//     }),
+//   }),
+// }),
